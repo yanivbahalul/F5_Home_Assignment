@@ -12,8 +12,7 @@ RUN rm /etc/nginx/sites-enabled/default
 COPY servers.conf /etc/nginx/sites-enabled/servers.conf
 
 #copy html files
-COPY src/html/index.html /var/www/html/index.html
-
+COPY src/html/ /var/www/html/
 #expose ports
 EXPOSE 8080 8000
 
