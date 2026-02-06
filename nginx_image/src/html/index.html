@@ -1,11 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #f0f4f8; 
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0;
+        }
 
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            text-align: center; 
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #7f8c8d;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        img {
+            max-width: 150px;
+            height: auto;
+            margin: 10px 0;
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.1); 
+        }
+    </style>
+</head>
 <body>
-    <h1>Hello World</h1>
-    <img src="wave.png">
-    <h1>it work on my machine</h1>
-    <img src="whale.png">
-    <p>and work on every machine</p>
+
+    <div class="container">
+        <h1>Hello World</h1>
+        <img src="wave.png" alt="Wave">
+        
+        <h1>It works on my machine!</h1>
+        <img src="whale.png" alt="Docker Whale">
+        
+        <p>and works on every machine...</p>
+    </div>
+
 </body>
 </html>
