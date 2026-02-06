@@ -1,0 +1,38 @@
+name: CI Test Workflow
+
+on: [push]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      #clone the repo virtually.
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      #build and test docker compose
+      - name: Build and Run with Docker Compose
+        id: run_tests
+        run: docker-compose up --build --exit-code-from test
+
+      # 3 success alert flag
+      - name: Create Success File
+        if: success()
+        run: echo "Tests passed!" > succeeded
+
+      # faild alert flag
+      - name: Create Failure File
+        if: failure()
+        run: echo "Tests failed!" > fail
+
+      # publish an artifact if faill  or success
+      - name: Upload Test Result Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-result-file
+          path: |
+            succeeded
+            fail
+          if-no-files-found: ignore 
