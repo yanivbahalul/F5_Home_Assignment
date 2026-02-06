@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  nginx_servers:
+    build: ./nginx_image
+    container_name: nginx_server
+    ports:
+    - 8080:8080
+    - 8000:8000
+
+
+  test:
+    build: ./test_image
+    container_name: test_container
+    depends_on:
+    - nginx_servers
+    
+

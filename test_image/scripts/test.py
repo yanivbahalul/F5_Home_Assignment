@@ -3,7 +3,7 @@ import sys
 
 #port 8080 check
 try:
-    f_response = requests.get("http://host.docker.internal:8080")
+    f_response = requests.get("http://nginx_servers:8080")
     if f_response.status_code == 200:
         print("Port 8080, returning 200 as expected")
     else:
@@ -17,7 +17,7 @@ except Exception as e:
 
 #port 8000 check
 try:
-    s_response = requests.get("http://host.docker.internal:8000")
+    s_response = requests.get("http://nginx_servers:8000")
     if s_response.status_code == 500:
         print("Port 8000, returning 500 as expected")
     else:
