@@ -1,0 +1,9 @@
+FROM python:3.11-alpine
+
+RUN pip install requests
+
+COPY scripts/test.py /var/www/scripts/test.py
+
+RUN chmod +x /var/www/scripts/test.py
+
+CMD ["python", "/var/www/scripts/test.py"]
