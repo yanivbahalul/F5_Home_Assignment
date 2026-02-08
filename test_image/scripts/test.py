@@ -1,50 +1,26 @@
 import requests
 import sys
 
-
-#port 8080 check
-try:
-    f_response = requests.get("http://nginx_servers:8080")
-    if f_response.status_code == 200:
-        print("Port 8080, returning 200 as expected")
-    else:
-        print(f"Port 8080 Failed: {f_response.status_code}")
-        sys.exit(1) 
-
-except Exception as e:
-    print(f"Error connecting to 8080: {e}")
-    sys.exit(1)
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 
+def check_port(url, expected_status,name):
+    try:
+        response = requests.get(url, verify=False)
+        if response.status_code == expected_status:
+            print(f"{name} check passed: {response.status_code} as expected")
+        else:
+            print(f"{name} check failed: {response.status_code} instead of {expected_status}")
+            sys.exit(1)
 
-#port 8000 check
-try:
-    s_response = requests.get("http://nginx_servers:8000")
-    if s_response.status_code == 500:
-        print("Port 8000, returning 500 as expected")
-    else:
-        print(f"Port 8000 Failed: {s_response.status_code}")
-        sys.exit(1) 
-
-except Exception as e:
-    print(f"Error connecting to 8000: {e}")
-    sys.exit(1)
-
-
-#port 443 check
-try:
-    h_response = requests.get("https://nginx_servers:443", verify=False)
-    if h_response.status_code == 200:
-        print("Port 443, returning 200 as expected")
-    else:
-        print(f"Port 443 Failed: {h_response.status_code}")
+    except Exception as e:
+        print(f"Error connecting to {name}: {e}")
         sys.exit(1)
 
-except Exception as e:
-    print(f"Error connecting to 443: {e}")
-    sys.exit(1)
-
-
+check_port("http://nginx_servers:8080", 200, "HTTP Port 8080")
+check_port("http://nginx_servers:8000", 500, "Error Port 8000")
+check_port("https://nginx_servers:443", 200, "HTTPS Port 443")
 
 print("Success")
 sys.exit(0)
