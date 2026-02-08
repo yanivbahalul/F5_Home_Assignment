@@ -1,6 +1,7 @@
 import requests
 import sys
 
+
 #port 8080 check
 try:
     f_response = requests.get("http://nginx_servers:8080")
@@ -15,6 +16,7 @@ except Exception as e:
     sys.exit(1)
 
 
+
 #port 8000 check
 try:
     s_response = requests.get("http://nginx_servers:8000")
@@ -27,6 +29,22 @@ try:
 except Exception as e:
     print(f"Error connecting to 8000: {e}")
     sys.exit(1)
+
+
+#port 443 check
+try:
+    h_response = requests.get("https://nginx_servers:443", verify=False)
+    if h_response.status_code == 200:
+        print("Port 443, returning 200 as expected")
+    else:
+        print(f"Port 443 Failed: {h_response.status_code}")
+        sys.exit(1)
+
+except Exception as e:
+    print(f"Error connecting to 443: {e}")
+    sys.exit(1)
+
+
 
 print("Success")
 sys.exit(0)

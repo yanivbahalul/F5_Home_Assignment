@@ -6,6 +6,12 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
+#generate SSL certificate
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+    -keyout /etc/ssl/private/nginx-selfsigned.key \
+    -out /etc/ssl/certs/nginx-selfsigned.crt \
+    -subj "/C=IL/ST=Israel/L=Holon/O=F5/OU=Student/CN=localhost"
+
 #copy custom config
 COPY servers.conf /etc/nginx/sites-enabled/servers.conf
 
@@ -13,7 +19,7 @@ COPY servers.conf /etc/nginx/sites-enabled/servers.conf
 COPY src/html/ /var/www/html/
 
 #expose ports
-EXPOSE 8080 8000
+EXPOSE 8080 8000 443
 
 #start nginx
 CMD ["nginx", "-g", "daemon off;"]
