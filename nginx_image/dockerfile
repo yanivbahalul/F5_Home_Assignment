@@ -3,6 +3,7 @@ FROM ubuntu:24.04
 #install nginx
 RUN apt-get update && apt-get install -y \
     nginx \
+    openssl \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
