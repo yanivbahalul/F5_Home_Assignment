@@ -6,7 +6,7 @@ This project runs a web server (Nginx) on Ubuntu and tests it automatically with
 
 1.  **Get the code:**
     ```bash
-    git clone [https://github.com/yanivbahalul/F5_Home_Assignment](https://github.com/yanivbahalul/F5_Home_Assignment)
+    clone the project.
     cd F5_Home_Assignment
     ```
 
