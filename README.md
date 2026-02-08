@@ -6,8 +6,8 @@ This project runs a web server (Nginx) on Ubuntu and tests it automatically with
 
 1.  **Get the code:**
     ```bash
-    git clone <YOUR_REPO_URL>
-    cd <YOUR_REPO_NAME>
+    git clone <[YOUR_REPO_URL](https://github.com/yanivbahalul/F5_Home_Assignment)>
+    cd <F5_Home_Assignment>
     ```
 
 2.  **Start the project:**
