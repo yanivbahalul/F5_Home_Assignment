@@ -24,6 +24,7 @@ check_port("http://nginx_servers:8080", 200, "HTTP Port 8080")
 check_port("http://nginx_servers:8000", 500, "Error Port 8000")
 check_port("https://nginx_servers:443", 200, "HTTPS Port 443")
 
+print("Success")
 
 # check rate limit
 blocked_count = 0
@@ -48,5 +49,3 @@ else:
     print("Rate limit test failed: No requests were blocked")
     sys.exit(1)
 
-print("Success")
-sys.exit(0)

@@ -21,12 +21,12 @@ jobs:
         if: success()
         run: echo "Tests passed!" > succeeded
 
-      # faild alert flag
+      # failed alert flag
       - name: Create Failure File
         if: failure()
         run: echo "Tests failed!" > fail
 
-      # publish an artifact if faill  or success
+      # publish an artifact if failed or success
       - name: Upload Test Result Artifact
         if: always()
         uses: actions/upload-artifact@v4
