@@ -32,7 +32,7 @@ total_requests = 20
 print("Starting rate limit test...")
 for i in range(total_requests):
     try:
-        res = requests.get("http://nginx_servers:8080", verify=False)
+        res = requests.get("https://nginx_servers:443", verify=False)
 
         if res.status_code == 503:
             blocked_count += 1
